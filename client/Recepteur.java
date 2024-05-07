@@ -19,7 +19,10 @@ public class Recepteur extends Message{
 
             while(true){
                 message = entree.readLine();
-                System.out.println("Raph: " + message);
+
+                if(message != null){
+                    System.out.println("Raph: " + message);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -23,6 +23,9 @@ public class Envoyeur extends Message {
                 System.out.print("Raph: ");
                 message = saisie.readLine();
                 envoyeur.println(message);
+
+                 //sauvegarder le message
+                 this.sauvegarder("Raph", message);
             }
 
         }

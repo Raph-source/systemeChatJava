@@ -36,7 +36,10 @@ public class Serveur {
                 }
             }
             else if(choix.charAt(0) == 'H'){
+
                 message.historique();
+
+                System.exit(0);
             }
             else{
                 System.out.println("choix incorrecte !!!");
