@@ -128,7 +128,6 @@ public class Client implements Runnable {
         }
         catch (SQLException e) {
         } 
-        System.out.println("i = " + i);
         if(i > 0)
             return true;
         return false;
