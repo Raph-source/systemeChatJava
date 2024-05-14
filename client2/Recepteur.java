@@ -1,11 +1,11 @@
-package client;
+package client2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Recepteur extends Message{
+public class Recepteur implements Runnable{
     private Socket socket;
 
     public Recepteur(Socket socket){
@@ -19,13 +19,16 @@ public class Recepteur extends Message{
 
             while(true){
                 message = entree.readLine();
-
                 if(message != null){
-                    System.out.println("Raph: " + message);
+                    String messageData[] = message.split(":", 2);
+
+                    if(!messageData[1].trim().equals("pas de personne avec ce nom"))
+                        System.out.println(message);
+                    else
+                        System.out.println(messageData[1].trim());
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

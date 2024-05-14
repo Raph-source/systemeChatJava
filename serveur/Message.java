@@ -2,21 +2,18 @@ package serveur;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
-import com.mysql.cj.xdevapi.Statement;
 
 public class Message implements Runnable {
     private Connection bdd = null;
 
     public Message(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
 
-            this.bdd = DriverManager.getConnection("jdbc:mysql://localhost:3306/chat", "root", "");
+            this.bdd = DriverManager.getConnection("jdbc:mysql://localhost:3307/chat", "root", "");
         } catch (Exception e) {
             System.out.println("Erreur lors de la connexion à la base de données : " + e.getMessage());
         }
@@ -37,8 +34,10 @@ public class Message implements Runnable {
         }    
     }
 
-    public void historique(){
+    public String historique(){
         String sql = "SELECT * FROM message ORDER BY id ASC";
+        String historique = "";
+
         try{
             java.sql.Statement requete = this.bdd.createStatement();
 
@@ -48,10 +47,12 @@ public class Message implements Runnable {
                 String auteur = trouver.getString("auteur");
                 String contenu = trouver.getString("contenu");
 
-                System.out.println(auteur + ": " + contenu);
+                historique += auteur + ":" + contenu + ',';
             }
         }
         catch (SQLException e) {
-            e.printStackTrace();
-        }    }
+        } 
+
+        return historique;
+    }
 }

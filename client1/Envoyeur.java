@@ -1,4 +1,4 @@
-package client;
+package client1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,14 +20,13 @@ public class Envoyeur implements Runnable {
             BufferedReader saisie = new BufferedReader(new InputStreamReader(System.in));
             
             while(true){
-                System.out.print("Aggée: ");
+                System.out.print("(A)ggée, (E)lisé, (D)anico:\n=>");
                 message = saisie.readLine();
                 envoyeur.println(message);
             }
 
         }
         catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

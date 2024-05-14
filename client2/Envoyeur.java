@@ -1,4 +1,4 @@
-package serveur;
+package client2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Envoyeur extends Message {
+public class Envoyeur implements Runnable {
     private Socket socket;
 
     public Envoyeur(Socket socket){
@@ -20,17 +20,17 @@ public class Envoyeur extends Message {
             BufferedReader saisie = new BufferedReader(new InputStreamReader(System.in));
             
             while(true){
-                System.out.print("Raph: ");
+                System.out.print("(A)ggée, (E)lisé, (D)anico:\n=>");
                 message = saisie.readLine();
                 envoyeur.println(message);
-
-                 //sauvegarder le message
-                 this.sauvegarder("Raph", message);
             }
 
         }
         catch (IOException e) {
-            e.printStackTrace();
         }
+    }
+
+    public void sauverger(String Message){
+
     }
 }
